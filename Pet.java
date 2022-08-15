@@ -1,4 +1,3 @@
-
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -9,6 +8,10 @@ public class Pet {
     private int age;
     private int trickLevel;
     String[] habits;
+
+    public Pet() {
+
+    }
 
     public String getSpecies() {
         return species;
@@ -73,16 +76,20 @@ public class Pet {
         System.out.println("I need to cover it up");
     }
 
-    Scanner sc = new Scanner(System.in);
-    @Override
-    public String toString() {
-        this.setTrickLevel(sc.nextInt());
-        return this.species +"{" +
-                "nickname='" + this.nickname +
-                "', age=" + this.age +
-                ", trickLevel=" + this.getTrickLevel() +
-                ", habits=[" + Arrays.toString(this.habits) +
-                "]}";
+    public static String tLevel(int a) {
+        if (a > 50) {
+            return "very sly";
+        } else {
+            return "almost not sly";
+        }
+    }
+
+    public void describePet() {
+        System.out.println("I have a " + getSpecies() + ", he is " + getAge() + " years old, he is " + tLevel(getTrickLevel()));
+    }
+
+    public void greetPet() {
+        System.out.println("Hello, " + getNickname());
     }
 
     @Override
@@ -90,14 +97,24 @@ public class Pet {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Pet pet = (Pet) o;
-        return age == pet.age && trickLevel == pet.trickLevel && Objects.equals(species, pet.species) && Objects.equals(nickname, pet.nickname) && Arrays.equals(habits, pet.habits) && Objects.equals(sc, pet.sc);
+        return age == pet.age && trickLevel == pet.trickLevel && Objects.equals(species, pet.species) && Objects.equals(nickname, pet.nickname) && Arrays.equals(habits, pet.habits);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(species, nickname, age, trickLevel, sc);
+        int result = Objects.hash(species, nickname, age, trickLevel);
         result = 31 * result + Arrays.hashCode(habits);
         return result;
     }
-}
 
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "species='" + species + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", trickLevel=" + trickLevel +
+                ", habits=" + Arrays.toString(habits) +
+                '}';
+    }
+}
