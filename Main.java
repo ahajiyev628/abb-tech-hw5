@@ -15,13 +15,17 @@ public class Main {
         father.setSurname("father surname");
         //father.setFamily(family1);
 
+        Family family1 = new Family(father, mother);
+        System.out.println(family1.toString());
+
+
         Pet p = new Pet();
         p.setSpecies("dog");
         p.setNickname("wimel");
         p.setTrickLevel(80);
         p.setAge(5);
+        family1.setPet(p);
 
-        Family family1 = new Family(p, father, mother);
         System.out.println(family1.toString());
 
         Human child = new Human();
@@ -69,6 +73,9 @@ public class Main {
         family1.deleteChild(1);
 
         family1.countFamily();
+
+
+
 
         // System.out.println(family.toString());
 
