@@ -1,3 +1,4 @@
+package homework5;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -8,17 +9,73 @@ public class Human {
     private int year;
 
     private int iq;
-    Pet pet;
-    Human mother;
-    Human father;
-
-    String[][] schedule = new String[6][2];
+    private Pet pet;
+    private Human mother;
+    private Human father;
+    private String[][] schedule = new String[6][2];
+    private Family family;
 
     public static String[] weekdays = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
     public static String[] tasks = {"do homework", "go to courses", "watch a film", "play a game", "meet with friends", "go for shopping", "go to sport"};
 
     public Human() {
 
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
+    public Human getMother() {
+        return mother;
+    }
+
+    public void setMother(Human mother) {
+        this.mother = mother;
+    }
+
+    public Human getFather() {
+        return father;
+    }
+
+    public void setFather(Human father) {
+        this.father = father;
+    }
+
+    public String[][] getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(String[][] schedule) {
+        this.schedule = schedule;
+    }
+
+    public Family getFamily() {
+        return family;
+    }
+
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
+    public static String[] getWeekdays() {
+        return weekdays;
+    }
+
+    public static void setWeekdays(String[] weekdays) {
+        Human.weekdays = weekdays;
+    }
+
+    public static String[] getTasks() {
+        return tasks;
+    }
+
+    public static void setTasks(String[] tasks) {
+        Human.tasks = tasks;
     }
 
     public String getName() {
@@ -55,6 +112,20 @@ public class Human {
 
     public int getIq() {
         return iq;
+    }
+
+    public Human(String name, String surname, Human mother, Human father, Family family) {
+        this.name = name;
+        this.surname = surname;
+        this.mother = mother;
+        this.father = father;
+        this.family = family;
+    }
+
+    public Human(String name, String surname, Family family) {
+        this.name = name;
+        this.surname = surname;
+        this.family = family;
     }
 
     public Human(String name, String surname, int year, Human mother, Human father) {
