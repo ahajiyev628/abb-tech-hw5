@@ -1,11 +1,13 @@
+package homework5;
+
 import java.util.Arrays;
 import java.util.Objects;
 
 public class Family {
-    Pet pet = new Pet();
-    Human mother = new Human("Allahverdi","Hajiyev");
-    Human father = new Human("Allahverdi", "Hajiyev");
-    Human[] children = new Human[0];
+    private Pet pet = new Pet();
+    private Human mother = new Human();
+    private Human father = new Human();
+    private Human[] children = new Human[0];
 
     public Family(Pet pet, Human mother, Human father, Human[] children) {
         this.pet = pet;
@@ -14,22 +16,82 @@ public class Family {
         this.children = children;
     }
 
+    public Family(Human mother, Human father) {
+        this.mother = mother;
+        this.father = father;
+    }
+
+    public Family(Pet pet, Human mother, Human father) {
+        this.pet = pet;
+        this.mother = mother;
+        this.father = father;
+    }
+
     public Family() {
     }
 
-    public Human[] deleteChild(Human child) {
-        int i = 0;
-        if (children.length > 1) {
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
+    public Human getMother() {
+        return mother;
+    }
+
+    public void setMother(Human mother) {
+        this.mother = mother;
+    }
+
+    public Human getFather() {
+        return father;
+    }
+
+    public void setFather(Human father) {
+        this.father = father;
+    }
+
+    public Human[] getChildren() {
+        return children;
+    }
+
+    public void setChildren(Human[] children) {
+        this.children = children;
+    }
+
+    //    public Human[] deleteChild(Human child) {
+//        int i = 0;
+//        if (children.length > 1) {
+//            Human[] newChildren = new Human[children.length - 1];
+//            for (Human ch : children) {
+//                if (!ch.equals(child)) {
+//                    newChildren[i] = ch;
+//                    i++;
+//                }
+//            }
+//            this.children = newChildren;
+//        }
+//        return children;
+//    }
+
+    public boolean deleteChild(int position) {
+        int j = 0;
+        if (position > 0 && position < children.length) {
             Human[] newChildren = new Human[children.length - 1];
-            for (Human ch : children) {
-                if (!ch.equals(child)) {
-                    newChildren[i] = ch;
-                    i++;
+            for (int i = 0; i < children.length; i++) {
+                if (position != i) {
+                    newChildren[j] = children[i];
+                    j++;
                 }
             }
             this.children = newChildren;
+        } else {
+            throw new IndexOutOfBoundsException("Please enter the correct index");
         }
-        return children;
+        return true;
     }
 
     public Human[] addChild(Human child) {
